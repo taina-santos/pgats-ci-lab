@@ -5,9 +5,11 @@
 #       - steps - instalar deps
 #       - steps - executar script de lint
 #   - jobs - unidade
+#       - depende de: inspeção
 #       - steps - instalar deps
 #       - steps - executar scripts de testes unitários
 #   - jobs - e2e-tests
+#       - depende de: unidade
 #       - steps - instalar deps
 #       - steps - subir a aplicação localmente
 #       - steps - instalar browsers/navegadores
@@ -40,6 +42,7 @@ jobs:
 
   unidade:
     runs-on: ubuntu-latest
+    needs: [inspecao]
 
     steps:
       - uses: actions/checkout@v4
@@ -55,6 +58,7 @@ jobs:
 
   e2e-tests:
     runs-on: ubuntu-latest
+    needs: [inspecao]
 
     steps:
       - uses: actions/checkout@v4
@@ -83,6 +87,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: [e2e-tests]
 
     steps:
       - name: simulação do deploy
