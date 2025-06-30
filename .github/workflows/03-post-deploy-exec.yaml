@@ -11,7 +11,7 @@ on:
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
-    
+
     # condicionais - if
     # `${ expressão }`
     # == comparação
@@ -28,14 +28,14 @@ jobs:
         run: npm install -g yarn
 
       - name: Instalando dependências
-        run: yarn 
-      
+        run: yarn
+
       - name: Instalando playwright
         run: yarn playwright install
-      
+
       - name: Executando testes e2e
         run: yarn run e2e
-      
+
       # geração e upload de relatório
       - uses: actions/upload-artifact@v4
         # caso a execução não seja cancelada, ele executa esse bloco

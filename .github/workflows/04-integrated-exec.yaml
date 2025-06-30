@@ -34,10 +34,10 @@ jobs:
 
       - name: Instalando dependências
         run: yarn
-      
+
       - name: checando padronização do código
         run: yarn lint
-  
+
   unidade:
     runs-on: ubuntu-latest
 
@@ -49,7 +49,7 @@ jobs:
 
       - name: Instalando dependências
         run: yarn
-      
+
       - name: executando teste de unidade
         run: yarn test
 
@@ -67,20 +67,20 @@ jobs:
         run: npm install -g yarn
 
       - name: Instalando dependências
-        run: yarn 
-      
+        run: yarn
+
       - name: Instalando playwright
         run: yarn playwright install
-      
+
       - name: Executando testes e2e
         run: yarn run e2e
-      
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: report
           path: ./playwright-report
-  
+
   deploy:
     runs-on: ubuntu-latest
 

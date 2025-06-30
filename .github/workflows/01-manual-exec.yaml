@@ -1,6 +1,6 @@
 # Nessa extensão, cuidado com o espaçamento e alinhamento do script
 # texto xpto
-  # espaçamento, adicionar ou excluir para evitar erros
+# espaçamento, adicionar ou excluir para evitar erros
 
 # CI de nível 1 - disparo manual a partir de 1 clique
 # Nome do pipeline
@@ -35,12 +35,12 @@ jobs:
 
       # instalação das dependências
       - name: Instalando dependências
-        run: yarn 
-      
+        run: yarn
+
       # instalando playwright
       - name: Instalando playwright
         run: yarn playwright install
-      
+
       # executando testes e2e no playwright
       - name: Executando testes e2e
         run: yarn run e2e
