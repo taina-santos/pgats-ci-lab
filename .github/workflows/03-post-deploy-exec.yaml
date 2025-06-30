@@ -35,3 +35,12 @@ jobs:
       
       - name: Executando testes e2e
         run: yarn run e2e
+      
+      # geração e upload de relatório
+      - uses: actions/upload-artifact@v4
+        # caso a execução não seja cancelada, ele executa esse bloco
+        # pode também ser usado com ${{ always() }}
+        if: ${{ !cancelled() }}
+        with:
+          name: report
+          path: ./playwrigh-report
