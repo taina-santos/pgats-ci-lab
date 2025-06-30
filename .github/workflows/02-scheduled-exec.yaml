@@ -1,0 +1,35 @@
+name: 'Execução agendada'
+
+# a sintaxe, chamada de cron, é usada para falar quando a gente quer que seja executado
+# a sintaxe é composta de cinco elementos:
+# a - minutagem
+# b - hora
+# c - dia do mês
+# d - mês
+# e - dia da semana
+# caso eu queira rodar toda segunda de manhã: a b c d e => 0 6 * * 1
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Instalando yarn
+        run: npm install -g yarn
+
+      - name: Instalando dependências
+        run: yarn 
+      
+      - name: Instalando playwright
+        run: yarn playwright install
+      
+      - name: Executando testes e2e
+        run: yarn run e2e
