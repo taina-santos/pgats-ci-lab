@@ -1,3 +1,4 @@
+# CI de nível 2 - disparo agendado
 name: 'Execução agendada'
 
 # a sintaxe, chamada de cron, é usada para falar quando a gente quer que seja executado
